@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require("mongoose")
 
 var indexRouter = require('./routes/index');
 var loginRouter = require("./routes/login");
@@ -13,6 +14,16 @@ var todoRouter = require("./routes/todo");
 var deleteRouter = require("./routes/delete");
 
 var app = express();
+const config = require("./config/key");
+
+const url = config.mongoURI;
+const connect = mongoose.connect(url, {useNewUrlParser: true});
+
+connect.then(function (db) {
+  console.log("Connected correctly to server");
+}, (err) => {
+  console.log(err);
+});
 
 
 // view engine setup

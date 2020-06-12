@@ -3,16 +3,7 @@ var router = express.Router();
 const mongoose = require("mongoose");
 const Users = require("../models/users")
 const Tasks = require("../models/tasks")
-const config = require("../config/key");
 
-const url = config.mongoURI;
-const connect = mongoose.connect(url, {useNewUrlParser: true});
-
-connect.then(function (db) {
-  console.log("Connected correctly to server");
-}, (err) => {
-  console.log(err);
-});
 
 router.get('/', function (req, res, next) {
   res.render('index');
