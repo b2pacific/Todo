@@ -11,6 +11,9 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
 
+  if(req.body.pass1 !== req.body.pass2)
+    return res.redirect("/");
+
   const tasks = new Tasks.Tasks({
     item: "Add Your tasks."
   });
