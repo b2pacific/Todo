@@ -28,14 +28,14 @@ router.post('/', function (req, res, next) {
     } else {
       user.comparePassword(req.body.pass1, function (err, isMatch) {
         if (!isMatch) {
-          res.redirect("login")
+          res.redirect("/login")
         } else {
           user.generateToken(function (err, user) {
             if (err)
               return res.statusCode(400);
             else {
               return res.cookie("your_auth", user.token)
-                .redirect("/todo");
+                        .redirect("/todo");
             }
           })
         }
