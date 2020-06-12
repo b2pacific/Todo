@@ -32,7 +32,9 @@ router.post('/', function (req, res, next) {
         } else {
           user.generateToken(function (err, user) {
             if (err)
-              return res.statusCode(400);
+              return res.json({
+                error: err
+              });
             else {
               return res.cookie("your_auth", user.token)
                         .redirect("/todo");
