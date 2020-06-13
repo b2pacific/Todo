@@ -6,6 +6,10 @@ const saltRounds = 2;
 const jwt = require("jsonwebtoken");
 
 const usersSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
