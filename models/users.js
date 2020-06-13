@@ -19,6 +19,10 @@ const usersSchema = new Schema({
     task: [Tasks.taskSchem],
     token: {
         type: String
+    },
+    logged: {
+        type: String,
+        default: ""
     }
 });
 

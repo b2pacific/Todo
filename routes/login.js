@@ -10,11 +10,10 @@ router.use(cookieParser());
 
 router.get('/', function (req, res, next) {
 
-  // if(req.token === "")
-  //   res.render("login");
-  // else
-  //   res.redirect("/todo");
-  res.render("login");
+  if(req.cookies.your_auth)
+    res.redirect("/todo");
+  else
+    res.render("login");
       
 });
 
@@ -36,6 +35,8 @@ router.post('/', function (req, res, next) {
                 error: err
               });
             else {
+              var today = new Date();
+              user.logged = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + " " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
               return res.cookie("your_auth", user.token)
                         .redirect("/todo");
             }

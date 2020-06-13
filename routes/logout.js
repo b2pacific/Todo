@@ -8,12 +8,13 @@ router.get('/', auth, function (req, res, next) {
     Users.findOneAndUpdate({
         _id: req.user._id
     }, {
-        token: ""
+        token: "", logged: ""
     }, function (err, user) {
         if (err)
             res.redirect("/login");
         else {
-            res.redirect("/login");
+            res.clearCookie("your_auth")
+                .redirect("/login");
         }
     })
 });
