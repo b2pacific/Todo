@@ -24,17 +24,20 @@ $("#InputPassword2, #InputEmail1").on("input", function () {
     var email = $("#InputEmail1").val();
     var p=0, e = 0;
 
+    $("#InputEmail1").popover({
+        content: "Invalid Email",
+        trigger: "manual"
+    });
+    $("#InputPassword1").popover({
+        content: "Minimum length 5",
+        trigger: "manual"
+    });
+
     if (!emailReg.test(email)) {
-        $("#InputEmail1").css({
-            "border-width": "3px",
-            "border-color": "red"
-        });
+        $("#InputEmail1").popover("show");
         p = 0;
     } else {
-        $("#InputEmail1").css({
-            "border-width": "1px",
-            "border-color": "#ced4da"
-        });
+        $("#InputEmail1").popover("hide");
         p = 1;
     }
 
@@ -51,8 +54,10 @@ $("#InputPassword2, #InputEmail1").on("input", function () {
                     "border-width": "3px",
                     "border-color": "red"
                 });
+                $("#InputPassword1").popover("show");
                 e = 0;
             } else {
+                $("#InputPassword1").popover("hide");
                 $("#InputPassword1").css({
                     "border-width": "1px",
                     "border-color": "#ced4da"
