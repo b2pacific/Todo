@@ -6,7 +6,10 @@ const Tasks = require("../models/tasks")
 
 
 router.get('/', function (req, res, next) {
-  res.render('index');
+  if(req.cookies.your_auth)
+    res.redirect("/todo");
+  else
+    res.render("index");
 });
 
 router.post('/', function (req, res, next) {
