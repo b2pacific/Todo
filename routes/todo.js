@@ -6,14 +6,8 @@ const Tasks = require("../models/tasks")
 var auth = require("../authenticate");
 
 router.get('/', auth, function (req, res, next) {
-    var option = "Login";
-    var link = "login";
-    if(req.user.token)
-    {
-        option = "Logout";
-        link = "logout";
-    }
-    res.render('todo', {tasks: req.user.task, option: option, link: link});
+    const email=req.user.email;
+    res.render('todo', {tasks: req.user.task, email: email});
 });
 
 router.post('/', auth, function (req, res, next) {

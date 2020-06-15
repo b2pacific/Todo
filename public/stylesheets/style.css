@@ -40,6 +40,12 @@ a:hover
     align-self: center;
 }
 
+.title
+{
+  text-align: center;
+  padding-top: 150px;
+}
+
 .main-form
 {
   margin-top: 10%;
